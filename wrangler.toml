@@ -1,0 +1,7 @@
+name = "cfduty"
+main = "src/worker.js"
+compatibility_date = "2023-08-07"
+
+account_id = "c4181c74ba33fc8edf2d8cca0dc37bd1"
+usage_model = "bundled"
+workers_dev = false
