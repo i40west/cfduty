@@ -69,28 +69,32 @@ app.post('/alert', async (c) => {
         if (c.env.CF_API_TOKEN && c.env.CF_ZONE_ID) {
             // Call the Cloudflare API to get the status of all health checks
             const url = `${cf_api_url}/zones/${c.env.CF_ZONE_ID}/healthchecks`;
-            const res = await fetch(url, {
+            await fetch(url, {
                 method: 'GET',
                 headers: {
 					'Authorization': 'Bearer ' + c.env.CF_API_TOKEN,
                 },
-            });
-            const json = await res.json();
-
-            let all_healthy = true;
-            for (let i = 0; i < json.result.length; i++) {
-                const result = json.result[i];
-                if (result.name.split('-')[0] === service_name) {
-                    if (result.status !== 'healthy') {
-                        all_healthy = false;
-                        break;
+            })
+            .then(res => res.json())
+            .then(json => {
+                let all_healthy = true;
+                for (let i = 0; i < json.result.length; i++) {
+                    const result = json.result[i];
+                    if (result.name.split('-')[0] === service_name) {
+                        if (result.status !== 'healthy') {
+                            all_healthy = false;
+                            break;
+                        }
                     }
                 }
-            }
-            if (all_healthy) {
-                console.log('all healthy, resolving incident');
-                action = 'resolve';
-            }
+                if (all_healthy) {
+                    console.log('all healthy, resolving incident');
+                    action = 'resolve';
+                }
+            })
+            .catch(err => {
+                console.error('error calling cloudflare api: ' + err);
+            });
         }
     }
 
