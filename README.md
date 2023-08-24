@@ -59,8 +59,11 @@ each service. The first name component is used to dedup alerts, so
 multiple alerts on `foo-*` health checks will create just one PagerDuty
 incident and thus one page.
 
+In PagerDuty, for each service, add an Integration and choose "Events API V2".
+This will create an integration key (routing key) for the service.
+
 For each service (`foo-*`) create an environment variable (or secret)
-for your Worker called `KEY_foo` with the PagerDuty service routing key.
+for your Worker called `KEY_foo` with this PagerDuty service routing key.
 
 > [!NOTE]
 > This works with a free PagerDuty account.
@@ -78,3 +81,7 @@ are determined by your PagerDuty escalation policy.)
 
 Thus, if you reboot a server, the incident will close automatically when
 the server comes back up.
+
+> [!IMPORTANT]
+> If the call to the PagerDuty API fails, this script does not queue and
+> retry the call. This should be added at some point (PRs welcome).
