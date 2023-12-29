@@ -7,10 +7,10 @@
     "start": "wrangler dev"
   },
   "devDependencies": {
-    "eslint": "^8.54.0",
-    "wrangler": "^3.17.1"
+    "eslint": "^8.56.0",
+    "wrangler": "^3.22.1"
   },
   "dependencies": {
-    "hono": "^3.10.2"
+    "hono": "^3.11.11"
   }
 }
