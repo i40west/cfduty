@@ -8,12 +8,12 @@
     "start": "wrangler dev"
   },
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
-    "eslint": "^9.5.0",
-    "globals": "^15.6.0",
-    "wrangler": "^3.61.0"
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "wrangler": "^3.76.0"
   },
   "dependencies": {
-    "hono": "^4.4.7"
+    "hono": "^4.6.1"
   }
 }
