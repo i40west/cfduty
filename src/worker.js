@@ -59,8 +59,8 @@ app.post('/alert', async (c) => {
     }
 
     // 'Healthy' notifications should not create a page, so set severity to info.
-	// If all health checks for this service are healthy, resolve the incident.
-	// If we don't have the token, or the call fails, just do nothing.
+    // If all health checks for this service are healthy, resolve the incident.
+    // If we don't have the token, or the call fails, just do nothing.
     let severity = 'critical';
     let action = 'trigger';
     if (body.data.status === 'Healthy') {
@@ -72,7 +72,7 @@ app.post('/alert', async (c) => {
             await fetch(url, {
                 method: 'GET',
                 headers: {
-					'Authorization': 'Bearer ' + c.env.CF_API_TOKEN,
+                    'Authorization': 'Bearer ' + c.env.CF_API_TOKEN,
                 },
             })
             .then(res => res.json())

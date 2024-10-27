@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es2020",
+    "module": "esnext",
+    "target": "esnext",
     "strict": false,
     "allowJs": true,
     "checkJs": false,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true
