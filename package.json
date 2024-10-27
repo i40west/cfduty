@@ -1,19 +1,20 @@
 {
   "name": "cfduty",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "deploy": "wrangler deploy",
-    "start": "wrangler dev"
+    "start": "wrangler dev",
+    "deploy-dev": "wrangler deploy --env dev"
   },
   "devDependencies": {
-    "@eslint/js": "^9.10.0",
-    "eslint": "^9.10.0",
-    "globals": "^15.9.0",
-    "wrangler": "^3.76.0"
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
+    "wrangler": "^3.83.0"
   },
   "dependencies": {
-    "hono": "^4.6.1"
+    "hono": "^4.6.7"
   }
 }
