@@ -39,11 +39,12 @@ app.post('/alert', async (c) => {
     // to create the webhook if we don't respond with success.
     // So we accept it and do nothing.
     if (body.text.startsWith('Hello World!')) {
-        console.log('test notification');
+        console.info('test notification');
         return c.text('ok');
     }
 
     if (body.alert_type !== 'health_check_status_notification') {
+        console.error('bad request:', body);
         return c.text('bad request', { status: 400 });
     }
 
@@ -55,6 +56,7 @@ app.post('/alert', async (c) => {
     const service_component = alert_name.split('-')[1];
     const key = c.env[`KEY_${service_name}`];
     if (!key) {
+        console.error('service not found:', service_name);
         return c.text(`service ${service_name} not found`, { status: 400 });
     }
 
@@ -65,6 +67,7 @@ app.post('/alert', async (c) => {
     let action = 'trigger';
     if (body.data.status === 'Healthy') {
         severity = 'info';
+        console.info('got healthy notification for ' + alert_name);
 
         if (c.env.CF_API_TOKEN && c.env.CF_ZONE_ID) {
             // Call the Cloudflare API to get the status of all health checks
@@ -83,6 +86,7 @@ app.post('/alert', async (c) => {
                     if (result.name.split('-')[0] === service_name) {
                         if (result.status !== 'healthy') {
                             all_healthy = false;
+                            console.info(result.name + ' is not healthy');
                             break;
                         }
                     }
@@ -96,6 +100,8 @@ app.post('/alert', async (c) => {
                 console.error('error calling cloudflare api: ' + err);
             });
         }
+    } else {
+        console.info('got unhealthy notification for ' + alert_name);
     }
 
     const alert = {
