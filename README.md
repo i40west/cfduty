@@ -98,7 +98,3 @@ Cloudflare's Workflows API. On a "healthy" notification, if the Cloudflare
 API calls fail even after a few retries, the PagerDuty notification is
 sent anyway (as a low-severity message so it won't generate a page), but
 won't resolve the incident.
-
-> [!IMPORTANT]
-> If the call to the PagerDuty API fails, this script does not queue and
-> retry the call. This should be added at some point (PRs welcome).
