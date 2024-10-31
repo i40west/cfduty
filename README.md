@@ -82,6 +82,13 @@ are determined by your PagerDuty escalation policy.)
 Thus, if you reboot a server, the incident will close automatically when
 the server comes back up.
 
+## 🤖 Error handling
+
+Calls to the Cloudflare and PagerDuty APIs are retried on failure using
+Cloudflare's Workflows API. On a "healthy" notification, if the Cloudflare
+API calls fail even after a few retries, the PagerDuty notification is
+sent anyway, but won't resolve the incident.
+
 > [!IMPORTANT]
 > If the call to the PagerDuty API fails, this script does not queue and
 > retry the call. This should be added at some point (PRs welcome).
