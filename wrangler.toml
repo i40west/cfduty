@@ -8,6 +8,16 @@ workers_dev = false
 [observability]
 enabled = true
 
+[[workflows]]
+name = "cfduty-workflow"
+binding = "WORKFLOW"
+class_name = "AlertWorkflow"
+
 [env.dev]
 name = "cfduty-dev"
 compatibility_date = "2024-09-02"
+
+[[env.dev.workflows]]
+name = "cfduty-workflow"
+binding = "WORKFLOW"
+class_name = "AlertWorkflow"
