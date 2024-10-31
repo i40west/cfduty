@@ -2,7 +2,6 @@ name = "cfduty"
 main = "src/worker.js"
 compatibility_date = "2024-09-02"
 
-account_id = "c4181c74ba33fc8edf2d8cca0dc37bd1"
 workers_dev = false
 
 [observability]
