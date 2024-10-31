@@ -10,11 +10,20 @@ down (or is rebooted).
 
 ## 🚧 Deploy the Worker
 
-Edit `wrangler.toml` and put in your Cloudflare account ID. If you want
-to use a `workers.dev` domain, change that setting as well.
+If you want to use Cloudflare's automatic deployment from Github, you
+can fork this repo into your own account and
+[connect Cloudflare to your repo](https://developers.cloudflare.com/workers/ci-cd/builds/).
+Or you can manually deploy with [Wrangler](https://developers.cloudflare.com/workers/wrangler/).
 
-Deploy the worker as normal. You need to create several environment
-variables, which you can create as secrets with Wrangler (details below).
+Edit `wrangler.toml` if necessary. If you want to use a `workers.dev`
+domain, or deploy the worker under a different name, this is where you
+do that.
+
+You need to create several environment variables, which you can create
+in the Dashboard or as secrets with Wrangler (details below).
+
+You can use the `workers.dev` domain Cloudflare assigns you, or you can
+put the worker on a custom domain like `alerts.example.com`.
 
 ## 🪝 Create a webhook
 
@@ -87,7 +96,8 @@ the server comes back up.
 Calls to the Cloudflare and PagerDuty APIs are retried on failure using
 Cloudflare's Workflows API. On a "healthy" notification, if the Cloudflare
 API calls fail even after a few retries, the PagerDuty notification is
-sent anyway, but won't resolve the incident.
+sent anyway (as a low-severity message so it won't generate a page), but
+won't resolve the incident.
 
 > [!IMPORTANT]
 > If the call to the PagerDuty API fails, this script does not queue and
