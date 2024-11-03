@@ -18,7 +18,6 @@ export default [
         rules: {
             'no-unused-vars': [ 'warn', { 'args': 'none' } ],
             'no-use-before-define': [ 'error', { 'functions': false } ],
-            'no-extra-semi': 'warn',
             '@stylistic/no-extra-semi': 'warn',
             '@stylistic/semi': ['warn', 'always'],
             '@stylistic/comma-dangle': ['warn', 'always-multiline'],
