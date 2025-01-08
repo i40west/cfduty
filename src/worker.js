@@ -9,7 +9,7 @@ const cf_api_url = 'https://api.cloudflare.com/client/v4';
 export class AlertWorkflow extends WorkflowEntrypoint {
     async run(event, step) {
 
-        const alert = await step.do('create alert', { retries: { limit: 1 } }, async () => {
+        const alert = await step.do('create alert', { retries: { limit: 1, delay: 1000 } }, async () => {
             const body = event.payload;
 
             const alert_name = body.data.name;
@@ -36,7 +36,7 @@ export class AlertWorkflow extends WorkflowEntrypoint {
                         resolve = await step.do('call cloudflare api', {
                             retries: {
                                 limit: 5,
-                                delay: 5,
+                                delay: 5000,
                                 backoff: 'linear',
                             },
                             timeout: '5 minutes',
