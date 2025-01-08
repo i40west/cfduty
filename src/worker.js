@@ -108,7 +108,7 @@ export class AlertWorkflow extends WorkflowEntrypoint {
         await step.do('send pagerduty alert', {
             retries: {
                 limit: 20,
-                delay: 5,
+                delay: 5000,
                 backoff: 'linear',
             },
             timeout: '30 minutes',
