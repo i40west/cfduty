@@ -1,6 +1,6 @@
 name = "cfduty"
 main = "src/worker.js"
-compatibility_date = "2025-01-08"
+compatibility_date = "2025-04-09"
 
 workers_dev = false
 
@@ -14,7 +14,7 @@ class_name = "AlertWorkflow"
 
 [env.dev]
 name = "cfduty-dev"
-compatibility_date = "2024-09-02"
+compatibility_date = "2025-04-09"
 
 [[env.dev.workflows]]
 name = "cfduty-workflow-dev"
