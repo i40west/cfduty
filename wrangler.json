@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cfduty",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-04-09",
+  "workers_dev": false,
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "NODE_VERSION": "23"
+  },
+  "workflows": [
+    {
+      "name": "cfduty-workflow",
+      "binding": "WORKFLOW",
+      "class_name": "AlertWorkflow"
+    }
+  ],
+  "env": {
+    "dev": {
+      "name": "cfduty-dev",
+      "compatibility_date": "2025-04-09",
+      "vars": {
+        "NODE_VERSION": "23"
+      },
+      "workflows": [
+        {
+          "name": "cfduty-workflow-dev",
+          "binding": "WORKFLOW",
+          "class_name": "AlertWorkflow"
+        }
+      ]
+    }
+  }
+}
+
