@@ -1,21 +1,26 @@
 {
   "name": "cfduty",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "oxlint .",
     "deploy": "wrangler deploy",
     "start": "wrangler dev",
     "deploy-dev": "wrangler deploy --env dev"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@stylistic/eslint-plugin": "^5.2.0",
-    "eslint": "^9.31.0",
-    "globals": "^16.3.0",
-    "wrangler": "^4.25.0"
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "oxlint": "^1.74.0",
+    "wrangler": "^4.111.0"
   },
   "dependencies": {
-    "hono": "^4.8.5"
+    "hono": "^4.12.30"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true,
+    "workerd@1.20260710.1": true,
+    "sharp@0.34.5": true
   }
 }
