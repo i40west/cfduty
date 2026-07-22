@@ -12,6 +12,7 @@
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
     "oxlint": "^1.74.0",
+    "typescript": "^5.8.3",
     "wrangler": "^4.111.0"
   },
   "dependencies": {
